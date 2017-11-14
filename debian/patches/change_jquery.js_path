@@ -1,0 +1,26 @@
+From ae211f5f11231815356d959f31accb9de46300a2 Mon Sep 17 00:00:00 2001
+From: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Date: Tue, 29 Aug 2017 12:31:42 +0900
+Subject: [PATCH 4/4] use system-installed jquery
+
+Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+---
+ doc/header.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/header.html b/doc/header.html
+index 94d42b400a..73e69f7484 100644
+--- a/doc/header.html
++++ b/doc/header.html
+@@ -9,7 +9,7 @@
+ <!--BEGIN !PROJECT_NAME--><title>$title</title><!--END !PROJECT_NAME-->
+ <link href="$relpath^opencv.ico" rel="shortcut icon" type="image/x-icon" />
+ <link href="$relpath^tabs.css" rel="stylesheet" type="text/css"/>
+-<script type="text/javascript" src="$relpath^jquery.js"></script>
++<script type="text/javascript" src="/usr/share/javascript/jquery/jquery.js"></script>
+ <script type="text/javascript" src="$relpath^dynsections.js"></script>
+ $treeview
+ $search
+-- 
+2.14.1
+
