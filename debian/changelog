@@ -1,4 +1,16 @@
-opencv (3.3.0+dfsg-1~exp0) experimental; urgency=medium
+opencv (3.4.2~git20180704~bionic1) bionic; urgency=medium
+
+  * Packaged upstream.
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Fri, 12 Jan 2018 03:11:44 +0200
+
+opencv (3.3.1~git20171115~ppa1) xenial; urgency=medium
+
+  * Packaged upstream.
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Wed, 15 Nov 2017 03:11:44 +0200
+
+opencv (3.3.0+dfsg-1) experimental; urgency=medium
 
   * Team upload.
 

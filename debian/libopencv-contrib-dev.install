@@ -37,6 +37,10 @@ usr/include/opencv2/hdf/*
 usr/include/opencv2/hdf.hpp
 usr/lib/*/libopencv_hdf.a
 usr/lib/*/libopencv_hdf.so
+# hfs
+usr/include/opencv2/hfs.hpp
+usr/lib/*/libopencv_hfs.a
+usr/lib/*/libopencv_hfs.so
 # line_descriptor
 usr/include/opencv2/line_descriptor/*
 usr/include/opencv2/line_descriptor.hpp
@@ -82,26 +86,25 @@ usr/include/opencv2/rgbd/*
 usr/include/opencv2/rgbd.hpp
 usr/lib/*/libopencv_rgbd.a
 usr/lib/*/libopencv_rgbd.so
-# tracking / disable by dnn
-#usr/include/opencv2/tracking/*
-#usr/include/opencv2/tracking.hpp
-#usr/lib/*/libopencv_tracking.a
-#usr/lib/*/libopencv_tracking.so
+# tracking
+usr/include/opencv2/tracking/*
+usr/include/opencv2/tracking.hpp
+usr/lib/*/libopencv_tracking.a
+usr/lib/*/libopencv_tracking.so
 # datasets
 usr/include/opencv2/datasets/*
-# usr/include/opencv2/datasets.hpp
 usr/lib/*/libopencv_datasets.a
 usr/lib/*/libopencv_datasets.so
-# text
-usr/include/opencv2/text/*
-usr/include/opencv2/text.hpp
-usr/lib/*/libopencv_text.a
-usr/lib/*/libopencv_text.so
-# face
-usr/include/opencv2/face/*
-usr/include/opencv2/face.hpp
-usr/lib/*/libopencv_face.a
-usr/lib/*/libopencv_face.so
+# text / disable by dnn
+#usr/include/opencv2/text/*
+#usr/include/opencv2/text.hpp
+#usr/lib/*/libopencv_text.a
+#usr/lib/*/libopencv_text.so
+# face / no download on PPA build
+#usr/include/opencv2/face/*
+#usr/include/opencv2/face.hpp
+#usr/lib/*/libopencv_face.a
+#usr/lib/*/libopencv_face.so
 # freetype
 usr/include/opencv2/freetype.hpp
 usr/lib/*/libopencv_freetype.a
@@ -130,9 +133,19 @@ usr/include/opencv2/img_hash/*
 usr/include/opencv2/img_hash.hpp
 usr/lib/*/libopencv_img_hash.a
 usr/lib/*/libopencv_img_hash.so
-# tracking
-usr/include/opencv2/tracking/*
-usr/include/opencv2/tracking.hpp
-usr/lib/*/libopencv_tracking.a
-usr/lib/*/libopencv_tracking.so
-
+# sfm / depends on xfeatures2d
+#usr/include/opencv2/sfm/*
+#usr/include/opencv2/sfm.hpp
+#usr/lib/*/libopencv_sfm.a
+#usr/lib/*/libopencv_sfm.so
+#usr/lib/*/libmultiview.a
+#usr/lib/*/libnumeric.a
+#usr/lib/*/libcorrespondence.a
+#usr/share/OpenCV/3rdparty/lib/*/libmultiview.a
+#usr/share/OpenCV/3rdparty/lib/*/libnumeric.a
+#usr/share/OpenCV/3rdparty/lib/*/libcorrespondence.a
+# xfeatures2d / no download on PPA build
+#usr/include/opencv2/xfeatures2d/*
+#usr/include/opencv2/xfeatures2d.hpp
+#usr/lib/*/libopencv_xfeatures2d.a
+#usr/lib/*/libopencv_xfeatures2d.so

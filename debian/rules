@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
-export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+# The hardening must be switched off to support the compilation of the static libraries with -fPIC
+export DEB_BUILD_MAINT_OPTIONS=hardening=-all
 include /usr/share/dpkg/architecture.mk
 
 BUILDDIR = obj-$(DEB_HOST_MULTIARCH)
@@ -53,7 +54,7 @@ CMAKE_FLAGS = \
 	-DINSTALL_C_EXAMPLES=ON	\
 	-DINSTALL_PYTHON_EXAMPLES=ON	\
 	-DWITH_FFMPEG=ON	\
-	-DWITH_GSTREAMER=OFF	\
+	-DWITH_GSTREAMER=ON	\
 	-DWITH_GTK=ON	\
 	-DWITH_JASPER=OFF	\
 	-DWITH_JPEG=ON	\
@@ -77,6 +78,9 @@ CMAKE_FLAGS = \
 	-DWITH_CAROTENE=OFF \
 	-DBUILD_opencv_dnn=OFF \
 	-DBUILD_opencv_dnn_modern=OFF \
+	-DBUILD_opencv_xfeatures2d=OFF \
+	-DBUILD_opencv_face=OFF \
+	-DWITH_OPENCL=OFF \
 	-DOPENCL_INCLUDE_DIR:PATH="/usr/include/CL/" \
 	-DOPENCV_EXTRA_MODULES_PATH="$(CURDIR)/contrib/modules" \
 	$(CMAKE_ARCH_FLAGS)
@@ -125,7 +129,14 @@ override_dh_install:
 	# change install path of java library
 	sed -i -e "s@share\/OpenCV\/java\/@lib\/jni\/@g" \
 		debian/tmp/usr/share/OpenCV/OpenCVModules-release.cmake
+#	sed -i 's/\/lib\//\/lib\/$(DEB_HOST_MULTIARCH)\//g' debian/tmp/usr/share/OpenCV/OpenCVModules-release.cmake
+#	sed -i 's/\/lib\/$(DEB_HOST_MULTIARCH)\/jni\//\/lib\/jni\//g' debian/tmp/usr/share/OpenCV/OpenCVModules-release.cmake
 
+	mkdir -p debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
+#	mv -f debian/tmp/usr/lib/pkgconfig debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
+#	mv -f debian/tmp/usr/lib/*.a debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
+#	mv -f debian/tmp/usr/lib/*.so debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
+#	mv -f debian/tmp/usr/lib/*.so.* debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
 	# put the static libs together with the rest of the stuff
 	cp -v $(BUILDDIR)-static/lib/*.a debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
 
