@@ -814,7 +814,7 @@ endif()
 include(cmake/OpenCVGenAndroidMK.cmake)
 
 # Generate OpenCVConfig.cmake and OpenCVConfig-version.cmake for cmake projects
-include(cmake/OpenCVGenConfig.cmake)
+#include(cmake/OpenCVGenConfig.cmake)
 
 # Generate Info.plist for the IOS framework
 if(APPLE_FRAMEWORK)

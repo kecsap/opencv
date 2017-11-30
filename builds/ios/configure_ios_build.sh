@@ -1,0 +1,2 @@
+./configure.sh
+./configure.sh
