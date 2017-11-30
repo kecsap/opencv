@@ -1,0 +1,61 @@
+aibo-opencv (3.3.1~git20171115~xenial3) xenial; urgency=medium
+
+  * Packaged newest upstream.
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Wed, 15 Nov 2017 03:11:44 +0200
+
+aibo-opencv (2.4.8-1~xenial5) xenial; urgency=low
+
+  * Update to the new toolchain with gcc 5.4
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Sun,  2 Oct 2016 20:30:48 +0300
+
+aibo-opencv (2.4.8-1~xenial2) xenial; urgency=low
+
+  * Fix the compilation for AIBO
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Thu, 19 Mar 2015 00:47:24 +0300
+
+aibo-opencv (2.4.8-1~trusty2) trusty; urgency=low
+
+  * Update the sources to version 2.4.8
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Tue,  7 Oct 2014 20:59:19 +0300
+
+aibo-opencv (2.4.6.1-3~saucy1) saucy; urgency=low
+
+  * Fix the install path of the static libraries
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Fri,  4 Apr 2014 23:36:19 +0200
+
+aibo-opencv (2.4.6.1-2~precise1) precise; urgency=low
+
+  * Fix a memory leak in Naive Bayes
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Wed, 18 Sep 2013 23:55:01 +0200
+
+aibo-opencv (2.4.6.1-1~precise1) precise; urgency=low
+
+  * Update to OpenCV 2.4.6.1
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Wed, 18 Sep 2013 23:16:33 +0200
+
+aibo-opencv (2.4.2-1~precise1) precise; urgency=low
+
+  * Update to OpenCV 2.4.2
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Mon, 16 Sep 2013 23:48:10 +0200
+
+aibo-opencv (2.3.1-2~precise1) precise; urgency=low
+
+  * Fix stripping problems
+  * Fix missing zlib in the package
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Mon, 16 Sep 2013 07:23:55 +0200
+
+aibo-opencv (2.3.1-1~precise1) precise; urgency=low
+
+  * Port for AIBO
+  * Based on Gijs Molenaar's PPA version
+
+ -- Csaba Kertesz <csaba.kertesz@gmail.com>  Fri, 10 Feb 2012 01:14:02 +0200

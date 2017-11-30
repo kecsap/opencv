@@ -29,6 +29,8 @@
  */
 #include "tiffiop.h"
 
+#include <fcntl.h>
+
 int
 TIFFFlush(TIFF* tif)
 {

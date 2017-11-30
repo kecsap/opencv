@@ -28,6 +28,9 @@
  * TIFF Library.
  */
 #include "tiffiop.h"
+
+#include <fcntl.h>
+
 #include <string.h>
 
 /************************************************************************/

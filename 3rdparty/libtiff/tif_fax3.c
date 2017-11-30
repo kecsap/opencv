@@ -25,6 +25,9 @@
  */
 
 #include "tiffiop.h"
+
+#include <sys/fcntl.h>
+
 #ifdef CCITT_SUPPORT
 /*
  * TIFF Library.

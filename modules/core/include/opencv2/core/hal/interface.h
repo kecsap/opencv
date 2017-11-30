@@ -29,8 +29,11 @@
 //! - int64  - signed 8 byte integer
 //! - uint64 - unsigned 8 byte integer
 //! @{
-#if !defined _MSC_VER && !defined __BORLANDC__
-#  if defined __cplusplus && __cplusplus >= 201103L && !defined __APPLE__
+#if !defined _MSC_VER && !defined __BORLANDC__ && !defined __AIBO_BUILD__
+#  if defined __AIBO_BUILD__
+#include <cstdint>
+typedef ::uint32_t uint;
+#  elif defined __cplusplus && __cplusplus >= 201103L && !defined __APPLE__
 #    include <cstdint>
 #    ifdef __NEWLIB__
         typedef unsigned int uint;
@@ -52,7 +55,13 @@ typedef signed char schar;
    typedef unsigned short ushort;
 #endif
 
-#if defined _MSC_VER || defined __BORLANDC__
+#  if defined __AIBO_BUILD__
+#include <cstdint>
+typedef ::int64_t int64;
+typedef ::uint64_t uint64;
+#  define CV_BIG_INT(n)   n##LL
+#  define CV_BIG_UINT(n)  n##ULL
+#elif defined _MSC_VER || defined __BORLANDC__
    typedef __int64 int64;
    typedef unsigned __int64 uint64;
 #  define CV_BIG_INT(n)   n##I64

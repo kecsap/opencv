@@ -32,6 +32,8 @@
 
 #include "tif_config.h"
 
+#include <stddef.h>
+
 #ifdef HAVE_FCNTL_H
 # include <fcntl.h>
 #endif

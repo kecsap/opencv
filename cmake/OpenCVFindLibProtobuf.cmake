@@ -23,7 +23,7 @@ endif()
 
 if(Protobuf_FOUND AND NOT BUILD_PROTOBUF)
   # nothing
-else()
+elseif (NOT AIBO)
   set(Protobuf_LIBRARIES libprotobuf)
   set(Protobuf_INCLUDE_DIRS "${OpenCV_SOURCE_DIR}/3rdparty/protobuf/src")
   if(NOT TARGET ${Protobuf_LIBRARIES})

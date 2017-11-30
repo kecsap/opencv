@@ -29,6 +29,8 @@
  */
 #include "tiffiop.h"
 
+#include <fcntl.h>
+
 /*
  * Dummy functions to fill the omitted client procedures.
  */

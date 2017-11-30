@@ -67,7 +67,11 @@ Mutex* __initialization_mutex_initializer = &getInitializationMutex();
 # endif
 #endif
 
-#if defined __ANDROID__ || defined __linux__ || defined __FreeBSD__ || defined __HAIKU__
+#if defined __AIBO_BUILD__
+#include <MCOOP.h>
+#endif
+
+#if (defined __ANDROID__ || defined __linux__ || defined __FreeBSD__ || defined __HAIKU__) && !defined __AIBO_BUILD__
 #  include <unistd.h>
 #  include <fcntl.h>
 #  include <elf.h>
@@ -692,9 +696,16 @@ int64 getTickCount(void)
     QueryPerformanceCounter( &counter );
     return (int64)counter.QuadPart;
 #elif defined __linux || defined __linux__
+#if !defined __AIBO_BUILD__
     struct timespec tp;
     clock_gettime(CLOCK_MONOTONIC, &tp);
     return (int64)tp.tv_sec*1000000000 + tp.tv_nsec;
+#else
+    SystemTime AiboTimer;
+
+    GetSystemTime(&AiboTimer);
+    return (int64)AiboTimer.seconds*1000000+(int64)AiboTimer.useconds;
+#endif
 #elif defined __MACH__ && defined __APPLE__
     return (int64)mach_absolute_time();
 #else
@@ -1179,6 +1190,20 @@ struct Mutex::Impl
     int refcount;
 };
 
+#elif defined __AIBO_BUILD__
+
+struct Mutex::Impl
+{
+    Impl() { refcount = 1; }
+    ~Impl() { }
+
+    void lock() {  }
+    bool trylock() { return true; }
+    void unlock() { }
+
+    int refcount;
+};
+
 #else
 
 struct Mutex::Impl
@@ -1266,7 +1291,9 @@ private:
     DWORD tlsKey;
 #endif
 #else // _WIN32
+#if !defined __AIBO_BUILD__
     pthread_key_t  tlsKey;
+#endif
 #endif
 };
 
@@ -1302,6 +1329,20 @@ void  TlsAbstraction::SetData(void *pData)
     CV_Assert(TlsSetValue(tlsKey, pData) == TRUE);
 }
 #endif
+#elif defined __AIBO_BUILD__
+TlsAbstraction::TlsAbstraction()
+{
+}
+TlsAbstraction::~TlsAbstraction()
+{
+}
+void* TlsAbstraction::GetData() const
+{
+    return nullptr;
+}
+void  TlsAbstraction::SetData(void *pData)
+{
+}
 #else // _WIN32
 TlsAbstraction::TlsAbstraction()
 {

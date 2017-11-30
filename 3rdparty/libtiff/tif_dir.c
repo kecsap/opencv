@@ -33,6 +33,8 @@
 #include "tiffiop.h"
 #include <float.h>
 
+#include <fcntl.h>
+
 /*
  * These are used in the backwards compatibility code...
  */

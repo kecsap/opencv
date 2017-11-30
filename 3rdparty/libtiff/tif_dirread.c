@@ -43,6 +43,8 @@
 #include <float.h>
 #include <stdlib.h>
 
+#include <fcntl.h>
+
 #define IGNORE 0          /* tag placeholder used below */
 #define FAILED_FII    ((uint32) -1)
 

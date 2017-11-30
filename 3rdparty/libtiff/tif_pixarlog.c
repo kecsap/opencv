@@ -25,6 +25,9 @@
  */
 
 #include "tiffiop.h"
+
+#include <fcntl.h>
+
 #ifdef PIXARLOG_SUPPORT
 
 /*

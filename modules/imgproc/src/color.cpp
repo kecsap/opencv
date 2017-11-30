@@ -143,8 +143,8 @@ const int CR2RI = 22987;
 static const float * splineBuild(const softfloat* f, size_t n)
 {
     float* tab = cv::allocSingleton<float>(n * 4);
-    const softfloat f2(2), f3(3), f4(4);
-    softfloat cn(0);
+    const softfloat f2((int32_t)2), f3((int32_t)3), f4((int32_t)4);
+    softfloat cn((int32_t)0);
     softfloat* sftab = reinterpret_cast<softfloat*>(tab);
     tab[0] = tab[1] = 0.0f;
 
@@ -5824,7 +5824,7 @@ static const softdouble D65[] = {softdouble::fromRaw(0x3fee6a22b3892ee8),
 
 enum { LAB_CBRT_TAB_SIZE = 1024, GAMMA_TAB_SIZE = 1024 };
 static const float *LabCbrtTab = 0;
-static const float LabCbrtTabScale = softfloat(LAB_CBRT_TAB_SIZE*2)/softfloat(3);
+static const float LabCbrtTabScale = softfloat((int32_t)LAB_CBRT_TAB_SIZE*2)/softfloat((int32_t)3);
 
 static const float *sRGBGammaTab = 0;
 static const float *sRGBInvGammaTab = 0;
@@ -5860,8 +5860,8 @@ static const int *abToXZ_b;
 static const bool enableRGB2LuvInterpolation = true;
 static const bool enablePackedRGB2Luv = true;
 static const bool enablePackedLuv2RGB = true;
-static const softfloat uLow(-134), uHigh(220), uRange(uHigh-uLow);
-static const softfloat vLow(-140), vHigh(122), vRange(vHigh-vLow);
+static const softfloat uLow((int32_t)-134), uHigh((int32_t)220), uRange(uHigh-uLow);
+static const softfloat vLow((int32_t)-140), vHigh((int32_t)122), vRange(vHigh-vLow);
 
 static struct LABLUVLUT_s16_t {
     const int16_t *RGB2LabLUT_s16;
@@ -5878,11 +5878,11 @@ static struct LUVLUT_T {
     value < 0.0f ? 0.0f : value > 1.0f ? 1.0f : value;
 
 //all constants should be presented through integers to keep bit-exactness
-static const softdouble gammaThreshold    = softdouble(809)/softdouble(20000);    //  0.04045
-static const softdouble gammaInvThreshold = softdouble(7827)/softdouble(2500000); //  0.0031308
-static const softdouble gammaLowScale     = softdouble(323)/softdouble(25);       // 12.92
-static const softdouble gammaPower        = softdouble(12)/softdouble(5);         //  2.4
-static const softdouble gammaXshift       = softdouble(11)/softdouble(200);       // 0.055
+static const softdouble gammaThreshold    = softdouble((int32_t)809)/softdouble((int32_t)20000);    //  0.04045
+static const softdouble gammaInvThreshold = softdouble((int32_t)7827)/softdouble((int32_t)2500000); //  0.0031308
+static const softdouble gammaLowScale     = softdouble((int32_t)323)/softdouble((int32_t)25);       // 12.92
+static const softdouble gammaPower        = softdouble((int32_t)12)/softdouble((int32_t)5);         //  2.4
+static const softdouble gammaXshift       = softdouble((int32_t)11)/softdouble((int32_t)200);       // 0.055
 
 static const softfloat lthresh = softfloat(216) / softfloat(24389); // 0.008856f = (6/29)^3
 static const softfloat lscale  = softfloat(841) / softfloat(108); // 7.787f = (29/3)^3/(29*4)
@@ -6099,7 +6099,7 @@ static void initLabTabs()
         int i;
         for(i = 0; i <= LAB_CBRT_TAB_SIZE; i++)
         {
-            softfloat x = scale*softfloat(i);
+            softfloat x = scale*softfloat((int32_t)i);
             f[i] = x < lthresh ? mulAdd(x, lscale, lbias) : cbrt(x);
         }
         LabCbrtTab = splineBuild(f, LAB_CBRT_TAB_SIZE);
@@ -6107,7 +6107,7 @@ static void initLabTabs()
         scale = softfloat::one()/softfloat(GammaTabScale);
         for(i = 0; i <= GAMMA_TAB_SIZE; i++)
         {
-            softfloat x = scale*softfloat(i);
+            softfloat x = scale*softfloat((int32_t)i);
             g[i] = applyGamma(x);
             ig[i] = applyInvGamma(x);
         }
@@ -6115,26 +6115,26 @@ static void initLabTabs()
         sRGBGammaTab = splineBuild(g, GAMMA_TAB_SIZE);
         sRGBInvGammaTab = splineBuild(ig, GAMMA_TAB_SIZE);
 
-        static const softfloat intScale(255*(1 << gamma_shift));
+        static const softfloat intScale((int64_t)255*(1 << gamma_shift));
         for(i = 0; i < 256; i++)
         {
-            softfloat x = softfloat(i)/f255;
+            softfloat x = softfloat((int32_t)i)/f255;
             sRGBGammaTab_b[i] = (ushort)(cvRound(intScale*applyGamma(x)));
             linearGammaTab_b[i] = (ushort)(i*(1 << gamma_shift));
         }
-        static const softfloat invScale = softfloat::one()/softfloat((int)INV_GAMMA_TAB_SIZE);
+        static const softfloat invScale = softfloat::one()/softfloat((int32_t)INV_GAMMA_TAB_SIZE);
         for(i = 0; i < INV_GAMMA_TAB_SIZE; i++)
         {
-            softfloat x = invScale*softfloat(i);
+            softfloat x = invScale*softfloat((int32_t)i);
             sRGBInvGammaTab_b[i] = (ushort)(cvRound(f255*applyInvGamma(x)));
             linearInvGammaTab_b[i] = (ushort)(cvTrunc(f255*x));
         }
 
         static const softfloat cbTabScale(softfloat::one()/(f255*(1 << gamma_shift)));
-        static const softfloat lshift2(1 << lab_shift2);
+        static const softfloat lshift2((int64_t)1 << lab_shift2);
         for(i = 0; i < LAB_CBRT_TAB_SIZE_B; i++)
         {
-            softfloat x = cbTabScale*softfloat(i);
+            softfloat x = cbTabScale*softfloat((int32_t)i);
             LabCbrtTab_b[i] = (ushort)(cvRound(lshift2 * (x < lthresh ? mulAdd(x, lscale, lbias) : cbrt(x))));
         }
 
@@ -6148,18 +6148,18 @@ static void initLabTabs()
             {
                 //yy = li / 903.3f;
                 //y = L*100/903.3f; 903.3f = (29/3)^3, 255 = 17*3*5
-                y = cvRound(softfloat(i*BASE*20*9)/softfloat(17*29*29*29));
+                y = cvRound(softfloat((int64_t)i*BASE*20*9)/softfloat((int64_t)17*29*29*29));
                 //fy = 7.787f * yy + 16.0f / 116.0f; 7.787f = (29/3)^3/(29*4)
-                ify = cvRound(softfloat(BASE)*(softfloat(16)/softfloat(116) + softfloat(i*5)/softfloat(3*17*29)));
+                ify = cvRound(softfloat((int32_t)BASE)*(softfloat((int32_t)16)/softfloat((int32_t)116) + softfloat((int32_t)i*5)/softfloat((int32_t)3*17*29)));
             }
             else
             {
                 //fy = (li + 16.0f) / 116.0f;
-                softfloat fy = (softfloat(i*100*BASE)/softfloat(255*116) +
-                                softfloat(16*BASE)/softfloat(116));
+                softfloat fy = (softfloat((int64_t)i*100*BASE)/softfloat((int32_t)255*116) +
+                                softfloat((int32_t)16*BASE)/softfloat((int32_t)116));
                 ify = cvRound(fy);
                 //yy = fy * fy * fy;
-                y = cvRound(fy*fy*fy/softfloat(BASE*BASE));
+                y = cvRound(fy*fy*fy/softfloat((int32_t)BASE*BASE));
             }
 
             LabToYF_b[i*2  ] = (ushort)y;   // 2260 <= y <= BASE
@@ -6169,10 +6169,10 @@ static void initLabTabs()
         //Lookup table for a,b to x,z conversion
         abToXZ_b = initLUTforABXZ(BASE);
 
-        softfloat dd = D65[0] + D65[1]*softdouble(15) + D65[2]*softdouble(3);
+        softfloat dd = D65[0] + D65[1]*softdouble((int32_t)15) + D65[2]*softdouble((int32_t)3);
         dd = softfloat::one()/max(dd, softfloat::eps());
-        softfloat un = dd*softfloat(13*4)*D65[0];
-        softfloat vn = dd*softfloat(13*9)*D65[1];
+        softfloat un = dd*softfloat((int32_t)13*4)*D65[0];
+        softfloat vn = dd*softfloat((int32_t)13*9)*D65[1];
 
         //when XYZ are limited to [0, 2]
         /*
@@ -6282,7 +6282,7 @@ static inline void trilinearPackedInterpolate(const v_uint16x8& inX, const v_uin
     v_mul_expand(v_setall_u16(3*8*LAB_LUT_DIM*LAB_LUT_DIM), idxsZ, addrDw10, addrDw11);
     addrDw0 += addrDw10; addrDw1 += addrDw11;
 
-    uint32_t CV_DECL_ALIGNED(16) addrofs[8];
+    uint CV_DECL_ALIGNED(16) addrofs[8];
     v_store_aligned(addrofs, addrDw0);
     v_store_aligned(addrofs + 4, addrDw1);
 
@@ -6361,7 +6361,7 @@ struct RGB2Lab_b
             else
                 whitePt[i] = D65[i];
 
-        static const softdouble lshift(1 << lab_shift);
+        static const softdouble lshift((int64_t)1 << lab_shift);
         for( int i = 0; i < _3; i++ )
         {
             softdouble c[3];
@@ -6451,7 +6451,7 @@ struct RGB2Lab_f
             coeffs[i*3 + blueIdx]       = c[2];
 
             CV_Assert( c[0] >= 0 && c[1] >= 0 && c[2] >= 0 &&
-                       c[0] + c[1] + c[2] < softfloat((int)LAB_CBRT_TAB_SIZE) );
+                       c[0] + c[1] + c[2] < softfloat((int32_t)LAB_CBRT_TAB_SIZE) );
         }
     }
 
@@ -6572,7 +6572,7 @@ struct RGB2Lab_f
             }
         }
 
-        static const float _a = (softfloat(16) / softfloat(116));
+        static const float _a = (softfloat((int32_t)16) / softfloat((int32_t)116));
         for (; i < n; i += 3, src += scn )
         {
             float R = clip(src[0]);
@@ -6643,8 +6643,8 @@ struct Lab2RGBfloat
             coeffs[i+blueIdx*3]     = (float)(c[2]*whitePt[i]);
         }
 
-        lThresh = softfloat(8); // 0.008856f * 903.3f  = (6/29)^3*(29/3)^3 = 8
-        fThresh = softfloat(6)/softfloat(29); // 7.787f * 0.008856f + 16.0f / 116.0f = 6/29
+        lThresh = softfloat((int32_t)8); // 0.008856f * 903.3f  = (6/29)^3*(29/3)^3 = 8
+        fThresh = softfloat((int32_t)6)/softfloat((int32_t)29); // 7.787f * 0.008856f + 16.0f / 116.0f = 6/29
 
         #if CV_SSE2
         haveSIMD = checkHardwareSupport(CV_CPU_SSE2);
@@ -6901,7 +6901,7 @@ struct Lab2RGBinteger
             else
                 whitePt[i] = D65[i];
 
-        static const softdouble lshift(1 << lab_shift);
+        static const softdouble lshift((int64_t)1 << lab_shift);
         for(int i = 0; i < 3; i++)
         {
             softdouble c[3];
@@ -7101,7 +7101,7 @@ struct Lab2RGBinteger
 
                     //limit indices in table and then substitute
                     //ro = tab[ro]; go = tab[go]; bo = tab[bo];
-                    int32_t CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
+                    int CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
                     v_int32x4 rs = v_max(v_setzero_s32(), v_min(tabsz, i_r));
                     v_int32x4 gs = v_max(v_setzero_s32(), v_min(tabsz, i_g));
                     v_int32x4 bs = v_max(v_setzero_s32(), v_min(tabsz, i_b));
@@ -7190,7 +7190,7 @@ struct Lab2RGBinteger
 
                     //limit indices in table and then substitute
                     //ro = tab[ro]; go = tab[go]; bo = tab[bo];
-                    int32_t CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
+                    int CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
                     v_int32x4 rs = v_max(v_setzero_s32(), v_min(tabsz, i_r));
                     v_int32x4 gs = v_max(v_setzero_s32(), v_min(tabsz, i_g));
                     v_int32x4 bs = v_max(v_setzero_s32(), v_min(tabsz, i_b));
@@ -7533,11 +7533,11 @@ struct RGB2Luvfloat
         }
 
         softfloat d = whitePt[0] +
-                      whitePt[1]*softdouble(15) +
-                      whitePt[2]*softdouble(3);
+                      whitePt[1]*softdouble((int32_t)15) +
+                      whitePt[2]*softdouble((int32_t)3);
         d = softfloat::one()/max(d, softfloat::eps());
-        un = d*softfloat(13*4)*whitePt[0];
-        vn = d*softfloat(13*9)*whitePt[1];
+        un = d*softfloat((int32_t)13*4)*whitePt[0];
+        vn = d*softfloat((int32_t)13*9)*whitePt[1];
 
         #if CV_SSE2
         haveSIMD = checkHardwareSupport(CV_CPU_SSE2);
@@ -7859,11 +7859,11 @@ struct Luv2RGBfloat
         }
 
         softfloat d = whitePt[0] +
-                      whitePt[1]*softdouble(15) +
-                      whitePt[2]*softdouble(3);
+                      whitePt[1]*softdouble((int32_t)15) +
+                      whitePt[2]*softdouble((int32_t)3);
         d = softfloat::one()/max(d, softfloat::eps());
-        un = softfloat(4*13)*d*whitePt[0];
-        vn = softfloat(9*13)*d*whitePt[1];
+        un = softfloat((int32_t)4*13)*d*whitePt[0];
+        vn = softfloat((int32_t)9*13)*d*whitePt[1];
         #if CV_SSE2
         haveSIMD = checkHardwareSupport(CV_CPU_SSE2);
         #endif
@@ -8382,7 +8382,7 @@ struct RGB2Luv_b
             }
             #endif
 
-            static const softfloat fL = f255/softfloat(100);
+            static const softfloat fL = f255/softfloat((int32_t)100);
             static const softfloat fu = f255/uRange;
             static const softfloat fv = f255/vRange;
             static const softfloat su = -uLow*f255/uRange;
@@ -8427,7 +8427,7 @@ struct Luv2RGBinteger
     {
         initLabTabs();
 
-        static const softdouble lshift(1 << lab_shift);
+        static const softdouble lshift((int64_t)1 << lab_shift);
         for(int i = 0; i < 3; i++)
         {
             softdouble c[3];
@@ -8537,8 +8537,8 @@ struct Luv2RGBinteger
                 v_uint8x16 u8l, u8u, u8v;
                 v_load_deinterleave(src + i, u8l, u8u, u8v);
 
-                int32_t CV_DECL_ALIGNED(16) xyz[48];
-                processLuvToXYZ(u8l, u8u, u8v, xyz);
+                int CV_DECL_ALIGNED(16) xyz[48];
+                processLuvToXYZ(u8l, u8u, u8v, (int32_t*)xyz);
 
                 v_int32x4 xiv[4], yiv[4], ziv[4];
                 for(int k = 0; k < 4; k++)
@@ -8568,7 +8568,7 @@ struct Luv2RGBinteger
 
                     //limit indices in table and then substitute
                     //ro = tab[ro]; go = tab[go]; bo = tab[bo];
-                    int32_t CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
+                    int CV_DECL_ALIGNED(16) rshifts[4], gshifts[4], bshifts[4];
                     v_int32x4 rs = v_max(v_setzero_s32(), v_min(tabsz, i_r));
                     v_int32x4 gs = v_max(v_setzero_s32(), v_min(tabsz, i_g));
                     v_int32x4 bs = v_max(v_setzero_s32(), v_min(tabsz, i_b));
@@ -8649,7 +8649,7 @@ struct Luv2RGB_b
         uchar alpha = ColorChannel<uchar>::max();
         float CV_DECL_ALIGNED(16) buf[3*BLOCK_SIZE];
 
-        static const softfloat fl = softfloat(100)/f255;
+        static const softfloat fl = softfloat((int32_t)100)/f255;
         static const softfloat fu = uRange/f255;
         static const softfloat fv = vRange/f255;
 

@@ -32,6 +32,8 @@
 #include "tiffiop.h"
 #include <float.h>
 
+#include <fcntl.h>
+
 #ifdef HAVE_IEEEFP
 #define TIFFCvtNativeToIEEEFloat(tif, n, fp)
 #define TIFFCvtNativeToIEEEDouble(tif, n, dp)

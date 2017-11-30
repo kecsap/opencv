@@ -1,0 +1,43 @@
+Source: aibo-opencv
+Priority: optional
+Maintainer: Csaba Kertesz <csaba.kertesz@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cmake, quilt, texlive-latex-base, openr-sdk-gcc5
+Standards-Version: 3.9.1
+Section: libs
+Homepage: http://opencvlibrary.sourceforge.net/
+
+Package: aibo-opencv
+Section: libdevel
+Architecture: any
+Depends: openr-sdk-gcc5, ${misc:Depends}, ${shlibs:Depends}
+Description: OpenCV development
+ This package contains the header files and static library needed to compile
+ applications that use OpenCV (Open Computer Vision).
+ .
+ The Open Computer Vision Library is a collection of algorithms and sample
+ code for various computer vision problems. The library is compatible with
+ IPL (Intel's Image Processing Library) and, if available, can use IPP
+ (Intel's Integrated Performance Primitives) for better performance.
+ .
+ OpenCV provides low level portable data types and operators, and a set
+ of high level functionalities for video acquisition, image processing and
+ analysis, structural analysis, motion analysis and object tracking, object
+ recognition, camera calibration and 3D reconstruction.
+
+
+Package: aibo-opencv-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Description: OpenCV documentation and examples
+ This package contains the OpenCV documentation and example programs.
+ .
+ The Open Computer Vision Library is a collection of algorithms and sample
+ code for various computer vision problems. The library is compatible with
+ IPL (Intel's Image Processing Library) and, if available, can use IPP
+ (Intel's Integrated Performance Primitives) for better performance.
+ .
+ OpenCV provides low level portable data types and operators, and a set
+ of high level functionalities for video acquisition, image processing and
+ analysis, structural analysis, motion analysis and object tracking, object
+ recognition, camera calibration and 3D reconstruction.

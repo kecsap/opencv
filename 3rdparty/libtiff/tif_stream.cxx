@@ -31,6 +31,8 @@
 #include "tiffio.hxx"
 #include <iostream>
 
+#include <string.h>
+
 #ifndef __VMS
 using namespace std;
 #endif

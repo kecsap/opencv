@@ -29,6 +29,8 @@
  * Scanline-oriented Read Support
  */
 #include "tiffiop.h"
+
+#include <fcntl.h>
 #include <stdio.h>
 
 #define TIFF_SIZE_T_MAX ((size_t) ~ ((size_t)0))
