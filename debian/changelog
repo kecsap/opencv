@@ -1,4 +1,4 @@
-aibo-opencv (3.3.1~git20171115~xenial3) xenial; urgency=medium
+aibo-opencv (3.4.0~git20180409~bionic1) bionic; urgency=medium
 
   * Packaged newest upstream.
 
