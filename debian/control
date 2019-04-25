@@ -6,9 +6,9 @@ Uploaders:
  Sam Hocevar (Debian packages) <sam+deb@zoy.org>,
  Nobuhiro Iwamatsu <iwamatsu@debian.org>,
 Build-Depends:
- cuda-cublas-dev-9-2,
- cuda-cudart-dev-9-2,
- cuda-cufft-dev-9-2,
+ libcublas-dev,
+ cuda-cudart-dev-10-1,
+ cuda-cufft-dev-10-1,
  ant,
  cmake (>= 2.8.7),
 # specifically include dbus-x11 to temporary work around #878878

@@ -1,4 +1,4 @@
-opencv (3.4.2~gpu~git20180704~bionic1) bionic; urgency=medium
+opencv (3.4.2~gpu~cuda10.1~git20180704~bionic1) bionic; urgency=medium
 
   * Packaged upstream.
 

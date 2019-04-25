@@ -73,7 +73,7 @@ CMAKE_FLAGS = \
 	-DWITH_ITT=OFF \
 	-DBUILD_TESTS=OFF \
 	-DCMAKE_SKIP_RPATH=ON \
-	-DWITH_CUDA=ON \
+	-DWITH_CUDA=ON -DCUDA_FAST_MATH=ON -DWITH_CUBLAS=ON -DBUILD_opencv_cudacodec=OFF -DCUDA_ARCH_BIN="6.1 7.5" -DCUDA_ARCH_PTX="6.1 7.5" \
 	-DENABLE_PRECOMPILED_HEADERS=OFF \
 	-DWITH_IPP=OFF \
 	-DWITH_CAROTENE=OFF \
@@ -154,6 +154,9 @@ override_dh_gencontrol:
 	dh_numpy
 	dh_numpy3
 	dh_gencontrol
+
+override_dh_installman:
+
 
 OCV_CONTRIB = opencv_contrib-3.2.0
 PKG = opencv
