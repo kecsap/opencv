@@ -29,4 +29,4 @@ usr/lib/*/libopencv_ximgproc.so.*
 usr/lib/*/libopencv_xobjdetect.so.*
 usr/lib/*/libopencv_xphoto.so.*
 # licenses
-usr/share/OpenCV/licenses/*
+usr/share/licenses/opencv3/*
