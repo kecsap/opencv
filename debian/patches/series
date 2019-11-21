@@ -1,7 +1,9 @@
-support_multiarch
-fix_ftbfs_on_non_linux
-disable_opengl_test_build
 change_jquery.js_path
+face-no-download.patch
+cmake-dont-install-inexistent-files.patch
+workaround-javadoc-failure.patch
+#464972855e25f71667009b8fe88092d11aab0297.patch
+#c657c6cbac26fd178778194dfc6d438bac8f2227.patch
+cmake-mips-no-msa.patch
+disable_opengl_test_build
 disable_dnn_modern
-fix_java_build.patch
-ccache_and_fpic_fixes

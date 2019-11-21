@@ -1,0 +1,13 @@
+Description: get rid of the weird javadoc build failure
+diff --git a/modules/java/jar/build.xml.in b/modules/java/jar/build.xml.in
+index bf2830186..74882f4c9 100644
+--- a/modules/java/jar/build.xml.in
++++ b/modules/java/jar/build.xml.in
+@@ -42,7 +42,6 @@
+       bottom="Generated on ${timestamp} / OpenCV @OPENCV_VCSVERSION@"
+       failonerror="true"
+       encoding="UTF-8" charset="UTF-8" docencoding="UTF-8"
+-      link="https://docs.oracle.com/javase/6/docs/api/"
+       additionalparam="--allow-script-in-comments"
+       >
+       <Header>

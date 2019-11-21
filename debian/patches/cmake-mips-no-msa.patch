@@ -1,0 +1,24 @@
+Description: disable MSA due to architecture violation
+Author,Date: git blame
+Upstream: https://github.com/opencv/opencv/issues/15730
+Index: opencv/cmake/OpenCVCompilerOptimizations.cmake
+===================================================================
+--- opencv.orig/cmake/OpenCVCompilerOptimizations.cmake
++++ opencv/cmake/OpenCVCompilerOptimizations.cmake
+@@ -342,11 +342,11 @@ elseif(ARM OR AARCH64)
+     ocv_update(CPU_FP16_IMPLIES "NEON")
+     set(CPU_BASELINE "NEON;FP16" CACHE STRING "${HELP_CPU_BASELINE}")
+   endif()
+-elseif(MIPS)
+-  ocv_update(CPU_MSA_TEST_FILE "${OpenCV_SOURCE_DIR}/cmake/checks/cpu_msa.cpp")
+-  ocv_update(CPU_KNOWN_OPTIMIZATIONS "MSA")
+-  ocv_update(CPU_MSA_FLAGS_ON "-mmsa")
+-  set(CPU_BASELINE "MSA" CACHE STRING "${HELP_CPU_BASELINE}")
++#elseif(MIPS)
++#  ocv_update(CPU_MSA_TEST_FILE "${OpenCV_SOURCE_DIR}/cmake/checks/cpu_msa.cpp")
++#  ocv_update(CPU_KNOWN_OPTIMIZATIONS "MSA")
++#  ocv_update(CPU_MSA_FLAGS_ON "-mmsa")
++#  set(CPU_BASELINE "MSA" CACHE STRING "${HELP_CPU_BASELINE}")
+ elseif(PPC64LE)
+   ocv_update(CPU_KNOWN_OPTIMIZATIONS "VSX;VSX3")
+   ocv_update(CPU_VSX_TEST_FILE "${OpenCV_SOURCE_DIR}/cmake/checks/cpu_vsx.cpp")
