@@ -84,7 +84,6 @@ Depends:
  libopencv-calib3d-dev (= ${binary:Version}),
  libopencv-contrib-dev (= ${binary:Version}),
  libopencv-core-dev (= ${binary:Version}),
- libopencv-dnn-dev (= ${binary:Version}),
  libopencv-features2d-dev (= ${binary:Version}),
  libopencv-flann-dev (= ${binary:Version}),
  libopencv-highgui-dev (= ${binary:Version}),
@@ -632,52 +631,6 @@ Description: computer vision Clustering and Search in Multi-Dimensional spaces l
  analysis, structural analysis, motion analysis and object tracking, object
  recognition, camera calibration and 3D reconstruction.
 
-Package: libopencv-dnn-dev
-Section: libdevel
-Architecture: any
-Multi-Arch: same
-Depends:
- libopencv-core-dev (= ${binary:Version}),
- libopencv-dnn4.1 (= ${binary:Version}),
- ${misc:Depends},
-Description: development files for libopencv-dnn4.1
- This package contains the header files and static library needed to compile
- in deep neural network module.
- .
- The Open Computer Vision Library is a collection of algorithms and sample
- code for various computer vision problems. The library is compatible with
- IPL (Intel's Image Processing Library) and, if available, can use IPP
- (Intel's Integrated Performance Primitives) for better performance.
- .
- OpenCV provides low level portable data types and operators, and a set
- of high level functionalities for video acquisition, image processing and
- analysis, structural analysis, motion analysis and object tracking, object
- recognition, camera calibration and 3D reconstruction.
-
-Package: libopencv-dnn4.1
-Section: libs
-Architecture: any
-Multi-Arch: same
-Pre-Depends:
- ${misc:Pre-Depends},
-Depends:
- libopencv-core4.1 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends},
-Description: computer vision Deep neural network module
- This package contains the OpenCV (Open Computer Vision) deep neural network
- module.
- .
- The Open Computer Vision Library is a collection of algorithms and sample
- code for various computer vision problems. The library is compatible with
- IPL (Intel's Image Processing Library) and, if available, can use IPP
- (Intel's Integrated Performance Primitives) for better performance.
- .
- OpenCV provides low level portable data types and operators, and a set
- of high level functionalities for video acquisition, image processing and
- analysis, structural analysis, motion analysis and object tracking, object
- recognition, camera calibration and 3D reconstruction.
-
 Package: libopencv-features2d-dev
 Section: libdevel
 Architecture: any
@@ -1093,7 +1046,6 @@ Depends:
  libopencv-calib3d-dev (= ${binary:Version}),
  libopencv-contrib4.1 (= ${binary:Version}),
  libopencv-core-dev (= ${binary:Version}),
- libopencv-dnn-dev (= ${binary:Version}),
  libopencv-features2d-dev (= ${binary:Version}),
  libopencv-flann-dev (= ${binary:Version}),
  libopencv-highgui-dev (= ${binary:Version}),
@@ -1133,7 +1085,6 @@ Pre-Depends:
 Depends:
  libopencv-calib3d4.1 (= ${binary:Version}),
  libopencv-core4.1 (= ${binary:Version}),
- libopencv-dnn4.1 (= ${binary:Version}),
  libopencv-features2d4.1 (= ${binary:Version}),
  libopencv-flann4.1 (= ${binary:Version}),
  libopencv-highgui4.1 (= ${binary:Version}),
@@ -1257,7 +1208,6 @@ Section: python
 Architecture: any
 Depends:
  libopencv-calib3d4.1 (= ${binary:Version}),
- libopencv-dnn4.1 (= ${binary:Version}),
  libopencv-features2d4.1 (= ${binary:Version}),
  libopencv-flann4.1 (= ${binary:Version}),
  libopencv-highgui4.1 (= ${binary:Version}),

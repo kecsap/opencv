@@ -21,6 +21,7 @@ Files-Excluded:
  samples/wp8/OcvRotatingCube/PhoneXamlDirect3DApp1/PhoneXamlDirect3DApp1/Assets/Lena.png
  samples/wp8/OpenCVXaml/OpenCVXaml/Assets/Lena.png
 Files-Excluded-contrib:
+ modules/dnn/3rdparty
  modules/xfeatures2d
 
 Files: *
