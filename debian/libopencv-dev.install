@@ -11,4 +11,4 @@ usr/lib/*/pkgconfig/opencv4.pc
 # misc
 usr/share/licenses/opencv4/SoftFloat-COPYING.txt
 usr/bin/setup_vars_opencv4.sh
-usr/share/licenses/opencv4/opencl-headers-LICENSE.txt
+#usr/share/licenses/opencv4/opencl-headers-LICENSE.txt

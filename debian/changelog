@@ -1,4 +1,4 @@
-opencv (4.2.0+dfsg-5) unstable; urgency=medium
+opencv (4.2.0~gpu+dfsg-5) unstable; urgency=medium
 
   [ Mo Zhou ]
   * Enable building with gstreamer as per user request.
