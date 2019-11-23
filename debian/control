@@ -7,6 +7,9 @@ Uploaders:
  Nobuhiro Iwamatsu <iwamatsu@debian.org>,
  Mo Zhou <cdluminate@gmail.com>,
 Build-Depends:
+ libcublas-dev,
+ cuda-cudart-dev-10-1,
+ cuda-cufft-dev-10-1,
  ant,
  cmake (>= 2.8.7),
  debhelper (>= 11),
@@ -84,6 +87,7 @@ Depends:
  libopencv-calib3d-dev (= ${binary:Version}),
  libopencv-contrib-dev (= ${binary:Version}),
  libopencv-core-dev (= ${binary:Version}),
+ libopencv-cuda-dev (= ${binary:Version}),
  libopencv-features2d-dev (= ${binary:Version}),
  libopencv-flann-dev (= ${binary:Version}),
  libopencv-highgui-dev (= ${binary:Version}),
@@ -1207,6 +1211,53 @@ Depends:
 Description: Python 3 bindings for the computer vision library
  This package contains Python 3 bindings for the OpenCV (Open Computer Vision)
  library.
+ .
+ The Open Computer Vision Library is a collection of algorithms and sample
+ code for various computer vision problems. The library is compatible with
+ IPL (Intel's Image Processing Library) and, if available, can use IPP
+ (Intel's Integrated Performance Primitives) for better performance.
+ .
+ OpenCV provides low level portable data types and operators, and a set
+ of high level functionalities for video acquisition, image processing and
+ analysis, structural analysis, motion analysis and object tracking, object
+ recognition, camera calibration and 3D reconstruction.
+
+Package: libopencv-cuda-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ libopencv-core-dev (= ${binary:Version}),
+ libopencv-cuda4.1 (= ${binary:Version}),
+ ${misc:Depends},
+Description: development files for libopencv-cuda4.1
+ This package contains the header files and static library needed to compile
+ applications that use OpenCV (Open Computer Vision) 3D data visualization
+ library.
+ .
+ The Open Computer Vision Library is a collection of algorithms and sample
+ code for various computer vision problems. The library is compatible with
+ IPL (Intel's Image Processing Library) and, if available, can use IPP
+ (Intel's Integrated Performance Primitives) for better performance.
+ .
+ OpenCV provides low level portable data types and operators, and a set
+ of high level functionalities for video acquisition, image processing and
+ analysis, structural analysis, motion analysis and object tracking, object
+ recognition, camera calibration and 3D reconstruction.
+
+Package: libopencv-cuda4.1
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ libopencv-core4.1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: computer vision CUDA acceleration library
+ This package contains the OpenCV (Open Computer Vision) 3D data visualization
+ runtime libraries.
  .
  The Open Computer Vision Library is a collection of algorithms and sample
  code for various computer vision problems. The library is compatible with

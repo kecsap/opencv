@@ -1,4 +1,4 @@
-opencv (4.1.2+dfsg-4) unstable; urgency=medium
+opencv (4.1.2~gpu+dfsg-4) unstable; urgency=medium
 
   * Disable MSA (MIPS* arch) to avoid ISA violation. (Closes: #942561)
   * Re-enable pkg-config file generation. (Closes: #942562)

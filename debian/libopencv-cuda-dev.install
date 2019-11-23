@@ -1,0 +1,11 @@
+# header files
+usr/include/opencv4/opencv2/cudev.hpp
+usr/include/opencv4/opencv2/cuda*.hpp
+usr/include/opencv4/opencv2/cudev/*
+usr/include/opencv4/opencv2/cudalegacy/*
+# libraries
+usr/lib/*/libopencv_cuda*.a
+usr/lib/*/libopencv_cuda*.so
+usr/lib/*/libopencv_cudev.a
+usr/lib/*/libopencv_cudev.so
+
