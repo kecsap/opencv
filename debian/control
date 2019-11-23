@@ -9,7 +9,6 @@ Uploaders:
 Build-Depends:
  ant [!hppa !hurd-any !kfreebsd-any],
  cmake (>= 2.8.7),
- debhelper-compat (= 12),
  default-jdk [!hppa !hurd-any !kfreebsd-any],
  dh-python,
  doxygen,
@@ -21,7 +20,6 @@ Build-Depends:
  libdc1394-22-dev [linux-any],
  libeigen3-dev,
  libgdal-dev,
- libgdcm-dev [!hppa !m68k !powerpcspe !sh4 !sparc64 !x32],
  libgl1-mesa-dev,
  libglu1-mesa-dev,
  libgoogle-glog-dev,
@@ -41,8 +39,6 @@ Build-Depends:
  libtiff-dev,
  libv4l-dev [linux-any],
  libvtk6-dev,
- libvtkgdcm-dev [!alpha !ppc64 !x32],
- libgdcm-tools,
  libgstreamer1.0-dev,
  libgstreamer-plugins-base1.0-dev,
  maven-repo-helper [!hppa !hurd-any !kfreebsd-any],
@@ -100,7 +96,6 @@ Depends:
  libopencv-shape-dev (= ${binary:Version}),
  libopencv-stitching-dev (= ${binary:Version}),
  libopencv-superres-dev (= ${binary:Version}),
- libopencv-ts-dev (= ${binary:Version}),
  libopencv-video-dev (= ${binary:Version}),
  libopencv-videoio-dev (= ${binary:Version}),
  libopencv-videostab-dev (= ${binary:Version}),
@@ -301,7 +296,6 @@ Section: libdevel
 Architecture: any
 Multi-Arch: same
 Depends:
- libgdcm-dev [!hppa !m68k !powerpcspe !riscv64 !sh4],
  libopencv-imgcodecs4.2 (= ${binary:Version}),
  libopencv-imgproc-dev (= ${binary:Version}),
  ${misc:Depends},
@@ -676,27 +670,6 @@ Depends:
 Description: computer vision Feature Detection and Descriptor Extraction library
  This package contains the OpenCV (Open Computer Vision) Feature Detection
  and Descriptor Extraction runtime libraries.
- .
- The Open Computer Vision Library is a collection of algorithms and sample
- code for various computer vision problems. The library is compatible with
- IPL (Intel's Image Processing Library) and, if available, can use IPP
- (Intel's Integrated Performance Primitives) for better performance.
- .
- OpenCV provides low level portable data types and operators, and a set
- of high level functionalities for video acquisition, image processing and
- analysis, structural analysis, motion analysis and object tracking, object
- recognition, camera calibration and 3D reconstruction.
-
-Package: libopencv-ts-dev
-Section: libdevel
-Architecture: any
-Multi-Arch: same
-Depends:
- libopencv-core-dev (= ${binary:Version}),
- ${misc:Depends},
-Description: development files for TS library of OpenCV (Open Computer Vision)
- This package contains the header files and static library needed to compile
- applications that use OpenCV (Open Computer Vision) TS library.
  .
  The Open Computer Vision Library is a collection of algorithms and sample
  code for various computer vision problems. The library is compatible with

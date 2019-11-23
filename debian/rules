@@ -12,8 +12,10 @@ CMAKE_ARCH_FLAGS :=
 # Reference: https://github.com/opencv/opencv/wiki/CPU-optimizations-build-options
 ifeq ($(DEB_HOST_ARCH_CPU),amd64)
  # Only SSE2 on amd64
- CMAKE_ARCH_FLAGS += -DCPU_BASELINE="SSE2"
- CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE="SSE3"
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE=SSE4_2
+ CMAKE_ARCH_FLAGS += -DCPU_DISPATCH="AVX,AVX2,AVX_512F,FMA3,POPCNT"
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE_REQUIRE=SSE4_2
+ CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE=
 else ifeq ($(DEB_HOST_ARCH_CPU),armhf)
  CMAKE_ARCH_FLAGS += -DCPU_BASELINE_DISABLE="VFPV3,NEON"
  CMAKE_ARCH_FLAGS += -DCPU_DISPATCH="VFPV3,NEON"
@@ -53,6 +55,7 @@ endif
 
 # For Java
 export JAVA_HOME=/usr/lib/jvm/default-java
+export PYTHON_EXECUTABLE=/usr/bin/python3
 
 CMAKE_FLAGS = \
 	-GNinja \
@@ -61,9 +64,13 @@ CMAKE_FLAGS = \
 	-DBUILD_PROTOBUF=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_PERF_TESTS=OFF \
-	-DBUILD_opencv_dnn=ON \
-	-DBUILD_opencv_dnn_modern=ON \
+	-DBUILD_opencv_dnn=OFF \
+	-DBUILD_opencv_dnn_modern=OFF \
 	-DBUILD_opencv_face=ON \
+	-DBUILD_opencv_xfeatures2d=OFF \
+	-DBUILD_opencv_sfm=OFF \
+	-DBUILD_opencv_python2=OFF \
+	-DPYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 \
 	-DCMAKE_BUILD_TYPE=Release	\
 	-DCMAKE_CXX_FLAGS_RELEASE="$(CXXFLAGS)" \
 	-DCMAKE_C_FLAGS_RELEASE="$(CFLAGS)" \
@@ -185,7 +192,9 @@ override_dh_install:
 	dh_install
 
 override_dh_missing:
-	dh_missing --fail-missing
+	dh_missing
+
+override_dh_shlibdeps:
 
 override_dh_gencontrol:
 	dh_numpy3 -p python3-opencv
