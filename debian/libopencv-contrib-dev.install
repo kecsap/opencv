@@ -92,10 +92,10 @@ usr/lib/*/libopencv_datasets.so
 #usr/lib/*/libopencv_text.a
 #usr/lib/*/libopencv_text.so
 # face
-#usr/include/opencv4/opencv2/face/*
-#usr/include/opencv4/opencv2/face.hpp
-#usr/lib/*/libopencv_face.a
-#usr/lib/*/libopencv_face.so
+usr/include/opencv4/opencv2/face/*
+usr/include/opencv4/opencv2/face.hpp
+usr/lib/*/libopencv_face.a
+usr/lib/*/libopencv_face.so
 # freetype
 usr/include/opencv4/opencv2/freetype.hpp
 usr/lib/*/libopencv_freetype.a
@@ -130,15 +130,15 @@ usr/include/opencv4/opencv2/tracking.hpp
 usr/lib/*/libopencv_tracking.a
 usr/lib/*/libopencv_tracking.so
 # dnn_objdetect
-usr/include/opencv4/opencv2/core_detect.hpp
-usr/lib/*/libopencv_dnn_objdetect.so
-usr/lib/*/libopencv_dnn_objdetect.a
+#usr/include/opencv4/opencv2/core_detect.hpp
+#usr/lib/*/libopencv_dnn_objdetect.so
+#usr/lib/*/libopencv_dnn_objdetect.a
 # quality
 usr/include/opencv4/opencv2/quality.hpp
 usr/include/opencv4/opencv2/quality/*
 usr/lib/*/libopencv_quality.a
 usr/lib/*/libopencv_quality.so
 # dnn_superres
-usr/include/opencv4/opencv2/dnn_superres.hpp 
-usr/lib/*/libopencv_dnn_superres.a
-usr/lib/*/libopencv_dnn_superres.so
+#usr/include/opencv4/opencv2/dnn_superres.hpp 
+#usr/lib/*/libopencv_dnn_superres.a
+#usr/lib/*/libopencv_dnn_superres.so
