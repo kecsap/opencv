@@ -1,4 +1,77 @@
-opencv (4.1.2~gpu+dfsg-4) unstable; urgency=medium
+opencv (4.2.0+dfsg-5) unstable; urgency=medium
+
+  [ Mo Zhou ]
+  * Enable building with gstreamer as per user request.
+  * Bump Standards-Version to 4.5.0 (no change).
+  * Specify Rules-Requires-Root: no.
+
+  [ Aurelien Jarno ]
+  * Re-enable features disabled on riscv64. (Closes: #951464)
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 18 Feb 2020 11:31:25 +0800
+
+opencv (4.2.0+dfsg-4) unstable; urgency=medium
+
+  * Skip dh_dwz on mipsel architecture.
+
+ -- Mo Zhou <lumin@debian.org>  Mon, 03 Feb 2020 09:14:53 +0800
+
+opencv (4.2.0+dfsg-3) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 01 Feb 2020 11:14:25 +0800
+
+opencv (4.2.0+dfsg-2) experimental; urgency=medium
+
+  * Remove unnecessary CPU baseline/dispatch flags and use upstream default.
+  * Stop building examples (-DBUILD_EXAMPLES=OFF) (Closes: #943706)
+  * Build without Java on several port architectures.
+    (Thanks Samuel Thibault) (Closes: #948248)
+  * Initialize autopkgtest: read image via python interface.
+  * No longer build tests for the shared object build.
+  * Remove get-orig-source target as uscan is already useful enough.
+  * Override lintian warnings for libopencv-dev::opencv4.pc .
+  * Bump debhelper compat level to 12 and deprecate d/compat.
+  * Update lintian overrides.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 10 Jan 2020 16:58:15 +0800
+
+opencv (4.2.0+dfsg-1) experimental; urgency=medium
+
+  * New upstream version 4.2.0+dfsg
+  * control: bump SOVERSION from 4.1 to 4.2
+  * Let libopencv4.2-java breaks&replaces libopencv4.1-java.
+  * Bump SOVERSION for install control files and pom.xml.
+  * Remove obsolete patch workaround-javadoc-failure.patch .
+  * Remove obsolete patch cmake-mips-no-msa.patch.
+  * Add the missing B-D libilmbase-dev.
+  * Add patch cmake-revert-openexr.patch to prevent FTBFS.
+  * Add missing B-D python3-bs4.
+    Make this package buildtable for RISCV64.
+  * Remove SSE3 and AVX from dynamic dispatching list for amd64.
+  * Explicitly set WITH_LAPACK and WITH_PROTOBUF to ON, and WITH_QT to OFF.
+  * Add WITH_NGRAPH=OFF to cmake options.
+  * Update my email address.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 31 Dec 2019 12:33:06 +0800
+
+opencv (4.1.2+dfsg-5) unstable; urgency=medium
+
+  [ Bas Couwenberg ]
+  * Replace libgdbm2-dev with libgdbm-dev,
+    and libvtkgdcm2-dev with libvtkgdcm-dev. (closes: #944341)
+
+  [ Mo Zhou ]
+  * Add AVX512_COMMON to amd64 dispatch list, and VFPV3,NEON to arm64 list.
+  * Exclude gdcm development packages from B-D on non-release architectures.
+
+  [ Gianfranco Costamagna ]
+  * Remove builddir-static to save some space (Closes: #943706)
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sun, 24 Nov 2019 16:08:26 +0800
+
+opencv (4.1.2+dfsg-4) unstable; urgency=medium
 
   * Disable MSA (MIPS* arch) to avoid ISA violation. (Closes: #942561)
   * Re-enable pkg-config file generation. (Closes: #942562)

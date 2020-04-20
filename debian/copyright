@@ -21,7 +21,6 @@ Files-Excluded:
  samples/wp8/OcvRotatingCube/PhoneXamlDirect3DApp1/PhoneXamlDirect3DApp1/Assets/Lena.png
  samples/wp8/OpenCVXaml/OpenCVXaml/Assets/Lena.png
 Files-Excluded-contrib:
- modules/dnn/3rdparty
  modules/xfeatures2d
 
 Files: *
@@ -87,6 +86,7 @@ Copyright: 2004-2008 Sam Hocevar <sam@zoy.org>
            2009-2017 Nobuhiro Iwamatsu <iwamatsu@debian.org>
            2016-2017 Mattia Rizzolo <mattia@debian.org>
            2018-2019 Mo Zhou <cdluminate@gmail.com>
+           2018-2020 Mo Zhou <lumin@debian.org>
 License: BSD-3-clause
 
 License: BSD-3-clause
